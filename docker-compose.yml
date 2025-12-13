@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+    invoice_portal_api:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        command: 'php artisan serve --host=0.0.0.0'
+        container_name: invoice_portal-api-container
+        restart: unless-stopped
+        volumes:
+            - .:/app
+        ports:
+            - 84:8000
+        networks:
+            - invoice_portal_network
+            - local_central_db_network
+            - wintext_network
+
+networks:
+    invoice_portal_network:
+        external: true
+    local_central_db_network:
+        external: true
+    wintext_network:
+        external: true

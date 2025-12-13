@@ -1,0 +1,3 @@
+<IfModule ea-php81.c>
+    AddHandler application/x-httpd-ea-php81 .php
+</IfModule>
