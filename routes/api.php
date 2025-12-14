@@ -179,21 +179,21 @@ Route::group(['prefix' => 'index', 'middleware' => 'auth:api'],function(){
 // -----------------------
 // Invoice Routes
 // -----------------------
-Route::group(['prefix' => 'wintext-invoice', 'middleware' => 'auth:api'],function(){
-    Route::get('/list-paginate', [InvoiceController::class, 'listPaginate']);
-    Route::get('/single-data/{id}', [InvoiceController::class, 'singleData']);
-    Route::post('/create', [InvoiceController::class, 'create']);
-    Route::put('/update', [InvoiceController::class, 'update']);
+// Route::group(['prefix' => 'wintext-invoice', 'middleware' => 'auth:api'],function(){
+//     Route::get('/list-paginate', [InvoiceController::class, 'listPaginate']);
+//     Route::get('/single-data/{id}', [InvoiceController::class, 'singleData']);
+//     Route::post('/create', [InvoiceController::class, 'create']);
+//     Route::put('/update', [InvoiceController::class, 'update']);
 
-    Route::get('get-support-data', [InvoiceController::class, 'getSupportData']);
-    Route::get('/filter-data', [InvoiceController::class, 'filterData']);
-    Route::post('/get-sms-quantity', [InvoiceController::class, 'getSmsQuantity']);
-    Route::get('/payment-accounts', [InvoiceController::class, 'getPaymentAccounts']);
-});
+//     Route::get('get-support-data', [InvoiceController::class, 'getSupportData']);
+//     Route::get('/filter-data', [InvoiceController::class, 'filterData']);
+//     Route::post('/get-sms-quantity', [InvoiceController::class, 'getSmsQuantity']);
+//     Route::get('/payment-accounts', [InvoiceController::class, 'getPaymentAccounts']);
+// });
 
 
 // Bank accounts route (ADD THIS - your frontend needs it!)
-Route::get('/bank-accounts', [InvoiceController::class, 'getBankAccounts']);
+// Route::get('/bank-accounts', [InvoiceController::class, 'getBankAccounts']);
 
 // Support data route (ADD THIS - your frontend needs it!)
 // Route::get('/get-support-data', [InvoiceController::class, 'getsupportdata']);
