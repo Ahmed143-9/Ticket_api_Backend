@@ -16,7 +16,7 @@ class CheckDomainStatus extends Command
         
         $domains = [
             'https://solquestbd.com',
-            'https://winterbd.com',
+            'https://wintelbd.com',
             'https://winsourcesbd.com',
             'https://battlechamp.win',
             'https://mobiappsbd.com',
@@ -27,7 +27,7 @@ class CheckDomainStatus extends Command
             'https://winfinbd.com',
             'https://wimpaybd.com',
             'https://wimpgbd.com',
-            'https://winterxbd.com',
+            'https://wintelxbd.com',
             'https://yogadubbd.com',
             'https://wineds.com',
         ];
