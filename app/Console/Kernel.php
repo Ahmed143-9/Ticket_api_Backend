@@ -15,7 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('sync:wintext-invoice-support-data')->hourly();
+        // $schedule->command('sync:wintext-invoice-support-data')->hourly();
     }
 
     /**

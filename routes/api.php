@@ -17,6 +17,8 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\BankAccountController;
 use App\Http\Controllers\CompanyInfoController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\DomainStatusController;
+
 
 use App\Http\Controllers\ProblemController;
 use App\Http\Controllers\FirstFaceAssignmentController;
@@ -232,3 +234,5 @@ Route::post('/first-face-assignments/update', [FirstFaceAssignmentController::cl
 Route::post('/first-face-assignments/delete', [FirstFaceAssignmentController::class, 'deleteAssignment']);
 Route::post('/first-face-assignments/getAll', [FirstFaceAssignmentController::class, 'getAllAssignments']);
 Route::post('/first-face-assignments/getActive', [FirstFaceAssignmentController::class, 'getActiveAssignments']);
+
+Route::get('/domains/status', [DomainStatusController::class, 'getStatuses']);
