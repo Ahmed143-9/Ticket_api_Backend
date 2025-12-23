@@ -26,7 +26,7 @@ use App\Http\Controllers\FirstFaceAssignmentController;
 // -----------------------
 // Banks CRUD
 // -----------------------
-Route::group(['prefix' => 'banks', 'middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'banks', 'middleware' => 'auth:api'], function () {
     Route::get('/', [BankController::class, 'index']);      // List all banks
     Route::get('/{id}', [BankController::class, 'show']);  // Show single bank
     Route::post('/', [BankController::class, 'store']);     // Create bank
@@ -38,7 +38,7 @@ Route::group(['prefix' => 'banks', 'middleware' => 'auth:api'],function(){
 // -----------------------
 // Bank Accounts CRUD
 // -----------------------
-Route::group(['prefix' => 'bank-accounts', 'middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'bank-accounts', 'middleware' => 'auth:api'], function () {
     Route::get('/', [BankAccountController::class, 'index']);
     Route::get('/{id}', [BankAccountController::class, 'show']);
     Route::post('/', [BankAccountController::class, 'store']);
@@ -49,7 +49,7 @@ Route::group(['prefix' => 'bank-accounts', 'middleware' => 'auth:api'],function(
 // -----------------------
 // Company Info CRUD
 // -----------------------
-Route::group(['prefix' => 'companies', 'middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'companies', 'middleware' => 'auth:api'], function () {
     Route::get('/', [CompanyInfoController::class, 'index']);
     Route::get('/{id}', [CompanyInfoController::class, 'show']);
     Route::post('/', [CompanyInfoController::class, 'store']);
@@ -61,7 +61,7 @@ Route::group(['prefix' => 'companies', 'middleware' => 'auth:api'],function(){
 // -----------------------
 // Applications CRUD
 // -----------------------
-Route::group(['prefix' => 'applications', 'middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'applications', 'middleware' => 'auth:api'], function () {
     Route::get('/', [ApplicationController::class, 'index']);
     Route::get('/{id}', [ApplicationController::class, 'show']);
     Route::post('/', [ApplicationController::class, 'store']);
@@ -74,7 +74,7 @@ Route::group(['prefix' => 'applications', 'middleware' => 'auth:api'],function()
 // -----------------------
 // Portal Roles CRUD
 // -----------------------
-Route::group(['prefix' => 'roles', 'middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'roles', 'middleware' => 'auth:api'], function () {
     Route::get('/', [PortalRoleController::class, 'index']);
     Route::get('/{id}', [PortalRoleController::class, 'show']);
     Route::post('/', [PortalRoleController::class, 'store']);
@@ -86,7 +86,7 @@ Route::group(['prefix' => 'roles', 'middleware' => 'auth:api'],function(){
 
 // ========Auth===========
 // ========Auth===========
-Route::post('v1/test', function(Request $request) {
+Route::post('v1/test', function (Request $request) {
     return response()->json([
         'message' => 'Test route works!',
         'method' => $request->method(),
@@ -97,9 +97,9 @@ Route::post('v1/test', function(Request $request) {
 
 Route::group([
     'prefix' => 'v1'
-], function(){
+], function () {
     Route::post('login', [AuthController::class, 'login'])
-    // ->name('login')->middleware("throttle:30,5")
+        // ->name('login')->middleware("throttle:30,5")
     ;
     // ->middleware("throttle:3,5")
     Route::post('signup', [AuthController::class, 'signup']);
@@ -125,7 +125,7 @@ Route::group([
 
 // =======List Data==============
 // =======List Data==============
-Route::group(['prefix' => 'v1/list', 'middleware'=>'auth:api'],function (){
+Route::group(['prefix' => 'v1/list', 'middleware' => 'auth:api'], function () {
 
     Route::post('getAllUserList', [ListController::class, 'getAllUserList']);
 });
@@ -134,9 +134,9 @@ Route::group(['prefix' => 'v1/list', 'middleware'=>'auth:api'],function (){
 
 // =======Audit Log Data==============
 // =======Audit Log Data==============
-Route::group(['prefix' => 'v1/audit-log'],function (){
+Route::group(['prefix' => 'v1/audit-log'], function () {
     Route::post('createAuditLog', [AuditLogController::class, 'createAuditLog']);
-    Route::group(['middleware'=>'auth:api'],function (){
+    Route::group(['middleware' => 'auth:api'], function () {
         Route::post('getAllAuditLog_p', [AuditLogController::class, 'getAllAuditLog_p'])->middleware('CheckPermission:audit log list');
     });
 });
@@ -155,7 +155,7 @@ Route::get('testDB', [CommonController::class, 'testDB']);
 
 // =======RSA==============
 // =======RSA==============
-Route::group(['prefix' => 'v1/rsa', 'middleware'=>'auth:api' ],function (){
+Route::group(['prefix' => 'v1/rsa', 'middleware' => 'auth:api'], function () {
     Route::post('encrypt', [RSAController::class, 'encrypt']);
     Route::post('decrypt', [RSAController::class, 'decrypt']);
 });
@@ -172,7 +172,7 @@ Route::group(['prefix' => 'v1/rsa', 'middleware'=>'auth:api' ],function (){
 // Route::get('index/{id}', [UsersController::class, 'index']);
 
 
-Route::group(['prefix' => 'index', 'middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'index', 'middleware' => 'auth:api'], function () {
     Route::get('/{id?}', [UsersController::class, 'index']);
 });
 
@@ -204,11 +204,11 @@ Route::group(['prefix' => 'index', 'middleware' => 'auth:api'],function(){
 
 
 
-Route::group(['prefix' => 'payment-method', 'middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'payment-method', 'middleware' => 'auth:api'], function () {
     Route::get('/payment-method-types', [PaymentMethodController::class, 'getPaymentMethodTypes']);
 });
 
-Route::group(['prefix' => 'mfs-types', 'middleware' => 'auth:api'],function(){
+Route::group(['prefix' => 'mfs-types', 'middleware' => 'auth:api'], function () {
     Route::get('/get-all', [MFSTypeController::class, 'getAll']);
 });
 
@@ -236,9 +236,9 @@ Route::post('/first-face-assignments/getAll', [FirstFaceAssignmentController::cl
 Route::post('/first-face-assignments/getActive', [FirstFaceAssignmentController::class, 'getActiveAssignments']);
 
 // Domain Status Management
-Route::group(['prefix' => 'domains'], function() {
+Route::group(['prefix' => 'domains'], function () {
     Route::get('/status', [DomainStatusController::class, 'getStatuses']);     // Get all domains
-    Route::post('/', [DomainStatusController::class, 'store']);                // Add new domain
+    Route::post('/store', [DomainStatusController::class, 'store']);                // Add new domain
     Route::put('/{id}', [DomainStatusController::class, 'update']);            // Update domain
     Route::delete('/{id}', [DomainStatusController::class, 'destroy']);        // Delete domain
 });
