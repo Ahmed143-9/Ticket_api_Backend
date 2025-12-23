@@ -235,4 +235,10 @@ Route::post('/first-face-assignments/delete', [FirstFaceAssignmentController::cl
 Route::post('/first-face-assignments/getAll', [FirstFaceAssignmentController::class, 'getAllAssignments']);
 Route::post('/first-face-assignments/getActive', [FirstFaceAssignmentController::class, 'getActiveAssignments']);
 
-Route::get('/domains/status', [DomainStatusController::class, 'getStatuses']);
+// Domain Status Management
+Route::group(['prefix' => 'domains'], function() {
+    Route::get('/status', [DomainStatusController::class, 'getStatuses']);     // Get all domains
+    Route::post('/', [DomainStatusController::class, 'store']);                // Add new domain
+    Route::put('/{id}', [DomainStatusController::class, 'update']);            // Update domain
+    Route::delete('/{id}', [DomainStatusController::class, 'destroy']);        // Delete domain
+});

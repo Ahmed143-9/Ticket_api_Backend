@@ -13,24 +13,14 @@ class CheckDomainStatus extends Command
     public function handle()
     {
         \Log::info("Domain status check started at: " . now());
-        
-        $domains = [
-            'https://solquestbd.com',
-            'https://wintelbd.com',
-            'https://winsourcesbd.com',
-            'https://battlechamp.win',
-            'https://mobiappsbd.com',
-            'https://mobile-masala.com',
-            'https://svcwin.com',
-            'https://wincommerz.com',
-            'https://winconnectbd.com',
-            'https://winfinbd.com',
-            'https://wimpaybd.com',
-            'https://wimpgbd.com',
-            'https://wintelxbd.com',
-            'https://yogadubbd.com',
-            'https://wineds.com',
-        ];
+
+        // Fetch domains from database instead of hardcoding
+        $domains = DomainStatus::where('is_active', true)->pluck('domain')->toArray();
+
+        if (empty($domains)) {
+            $this->warn('No active domains to check.');
+            return;
+        }
 
         // Use Guzzle or direct curl without process dependency
         $results = $this->checkDomainsWithMultiCurl($domains);
